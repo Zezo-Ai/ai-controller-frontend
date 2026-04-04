@@ -30,7 +30,7 @@ class Frontend
 	 */
 	public static function cache( bool $value )
 	{
-		self::$cache = (boolean) $value;
+		self::$cache = (bool) $value;
 		self::$objects = [];
 	}
 

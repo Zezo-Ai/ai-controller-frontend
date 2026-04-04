@@ -168,7 +168,6 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$class = new \ReflectionClass( \Aimeos\Controller\Frontend\Review\Decorator\Base::class );
 		$method = $class->getMethod( $name );
-		$method->setAccessible( true );
 
 		return $method;
 	}
