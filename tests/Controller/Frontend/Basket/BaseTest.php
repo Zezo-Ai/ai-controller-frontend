@@ -31,10 +31,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testCheckLocale()
 	{
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( [] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$this->context->session()->set( 'aimeos/basket/locale', 'unittest|en|EUR' );
 		$this->access( 'checkLocale' )->invokeArgs( $object, [$this->context->locale(), 'unittest'] );
@@ -52,10 +49,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$ordBaseItem->addAddress( $address, \Aimeos\MShop\Order\Item\Address\Base::TYPE_PAYMENT );
 
 
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( [] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$result = $this->access( 'copyAddresses' )->invokeArgs( $object, [$ordBaseItem, ['test'], 'unittest|en|EUR'] );
 
@@ -108,10 +102,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$ordBaseItem->addCoupon( 'OPQR', [] );
 
 
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( [] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$object->addProduct( $product );
 
@@ -157,10 +148,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$ordBaseItem->addProduct( $ordProdItem );
 
 
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( [] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$result = $this->access( 'copyProducts' )->invokeArgs( $object, [$ordBaseItem, ['test'], 'unittest|en|EUR'] );
 
@@ -212,10 +200,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$ordBaseItem->addService( $ordServItem, \Aimeos\MShop\Order\Item\Service\Base::TYPE_DELIVERY );
 
 
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( [] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$result = $this->access( 'copyServices' )->invokeArgs( $object, [$ordBaseItem, ['test'], 'unittest|en|EUR'] );
 
@@ -271,10 +256,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 			throw new \Exception( sprintf( 'No order item found for price "%1$s"', '53,50' ) );
 		}
 
-		$object = $this->getMockBuilder( \Aimeos\Controller\Frontend\Basket\Standard::class )
-			->setConstructorArgs( [$this->context] )
-			->onlyMethods( ['getAttributes'] )
-			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Basket\Standard( $this->context );
 
 		$stub = $this->getMockBuilder( \Aimeos\MShop\Subscription\Manager\Standard::class )
 			->setConstructorArgs( [$this->context] )

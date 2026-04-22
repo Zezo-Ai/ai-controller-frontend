@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Order\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Order\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Order\Decorator\Example( $this->stub, $this->context );
 	}
@@ -65,9 +63,14 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'order' )->create();
 		$expected = \Aimeos\MShop\Order\Item\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'get' )->willReturn( $item );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Order\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Order\Decorator\Example( $stub, $this->context );
 
-		$this->assertInstanceOf( $expected, $this->object->get( -1, false ) );
+		$stub->expects( $this->once() )->method( 'get' )->willReturn( $item );
+
+		$this->assertInstanceOf( $expected, $object->get( -1, false ) );
 	}
 
 
@@ -82,9 +85,14 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'order' )->create();
 		$expected = \Aimeos\MShop\Order\Item\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'save' )->willReturnArgument( 0 );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Order\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Order\Decorator\Example( $stub, $this->context );
 
-		$this->assertInstanceOf( $expected, $this->object->save( $item ) );
+		$stub->expects( $this->once() )->method( 'save' )->willReturnArgument( 0 );
+
+		$this->assertInstanceOf( $expected, $object->save( $item ) );
 	}
 
 
@@ -93,10 +101,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$total = 0;
 		$item = \Aimeos\MShop::create( $this->context, 'order' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Order\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Order\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search( $total )->toArray() );
+		$this->assertEquals( [$item], $object->search( $total )->toArray() );
 	}
 
 

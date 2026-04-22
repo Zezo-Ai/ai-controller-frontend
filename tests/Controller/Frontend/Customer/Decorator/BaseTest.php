@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Customer\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $this->stub, $this->context );
 	}
@@ -56,8 +54,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testAdd()
 	{
-		$this->stub->expects( $this->once() )->method( 'add' );
-		$this->assertSame( $this->object, $this->object->add( [] ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'add' );
+		$this->assertSame( $object, $object->add( [] ) );
 	}
 
 
@@ -65,8 +68,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/address' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'addAddressItem' );
-		$this->assertSame( $this->object, $this->object->addAddressItem( $item ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'addAddressItem' );
+		$this->assertSame( $object, $object->addAddressItem( $item ) );
 	}
 
 
@@ -74,8 +82,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$listItem = \Aimeos\MShop::create( $this->context, 'customer/lists' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'addListItem' );
-		$this->assertSame( $this->object, $this->object->addListItem( 'customer', $listItem ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'addListItem' );
+		$this->assertSame( $object, $object->addListItem( 'customer', $listItem ) );
 	}
 
 
@@ -83,8 +96,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/property' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'addPropertyItem' );
-		$this->assertSame( $this->object, $this->object->addPropertyItem( $item ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'addPropertyItem' );
+		$this->assertSame( $object, $object->addPropertyItem( $item ) );
 	}
 
 
@@ -92,8 +110,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/address' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'createAddressItem' )->willReturn( $item );
-		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Address\Iface::class, $this->object->createAddressItem() );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'createAddressItem' )->willReturn( $item );
+		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Address\Iface::class, $object->createAddressItem() );
 	}
 
 
@@ -101,8 +124,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/lists' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'createListItem' )->willReturn( $item );
-		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Lists\Iface::class, $this->object->createListItem() );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'createListItem' )->willReturn( $item );
+		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Lists\Iface::class, $object->createListItem() );
 	}
 
 
@@ -110,15 +138,25 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/property' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'createPropertyItem' )->willReturn( $item );
-		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Property\Iface::class, $this->object->createPropertyItem() );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'createPropertyItem' )->willReturn( $item );
+		$this->assertInstanceOf( \Aimeos\MShop\Common\Item\Property\Iface::class, $object->createPropertyItem() );
 	}
 
 
 	public function testDeleteItem()
 	{
-		$this->stub->expects( $this->once() )->method( 'delete' );
-		$this->assertSame( $this->object, $this->object->delete() );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'delete' );
+		$this->assertSame( $object, $object->delete() );
 	}
 
 
@@ -126,8 +164,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/address' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'deleteAddressItem' );
-		$this->assertSame( $this->object, $this->object->deleteAddressItem( $item ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'deleteAddressItem' );
+		$this->assertSame( $object, $object->deleteAddressItem( $item ) );
 	}
 
 
@@ -135,8 +178,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$listItem = \Aimeos\MShop::create( $this->context, 'customer/lists' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'deleteListItem' );
-		$this->assertSame( $this->object, $this->object->deleteListItem( 'customer', $listItem ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'deleteListItem' );
+		$this->assertSame( $object, $object->deleteListItem( 'customer', $listItem ) );
 	}
 
 
@@ -144,8 +192,13 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer/property' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'deletePropertyItem' );
-		$this->assertSame( $this->object, $this->object->deletePropertyItem( $item ) );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'deletePropertyItem' );
+		$this->assertSame( $object, $object->deletePropertyItem( $item ) );
 	}
 
 
@@ -153,10 +206,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'find' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'find' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Customer\Item\Iface::class, $this->object->find( 'test' ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Customer\Item\Iface::class, $object->find( 'test' ) );
 	}
 
 
@@ -164,17 +222,27 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'customer' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Customer\Item\Iface::class, $this->object->get() );
+		$this->assertInstanceOf( \Aimeos\MShop\Customer\Item\Iface::class, $object->get() );
 	}
 
 
 	public function testStore()
 	{
-		$this->stub->expects( $this->once() )->method( 'store' );
-		$this->assertSame( $this->object, $this->object->store() );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Customer\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Customer\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'store' );
+		$this->assertSame( $object, $object->store() );
 	}
 
 

@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Product\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $this->stub, $this->context );
 	}
@@ -56,10 +54,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testAggregate()
 	{
-		$this->stub->expects( $this->once() )->method( 'aggregate' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'aggregate' )
 			->willReturn( map() );
 
-		$this->assertEquals( [], $this->object->aggregate( 'test' )->toArray() );
+		$this->assertEquals( [], $object->aggregate( 'test' )->toArray() );
 	}
 
 
@@ -87,19 +90,29 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'product' )->create();
 		$expected = \Aimeos\MShop\Product\Item\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'find' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'find' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( $expected, $this->object->find( 'test', ['text'] ) );
+		$this->assertInstanceOf( $expected, $object->find( 'test', ['text'] ) );
 	}
 
 
 	public function testFunction()
 	{
-		$this->stub->expects( $this->once() )->method( 'function' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'function' )
 			->willReturn( 'product:has("domain","type","refid")' );
 
-		$str = $this->object->function( 'product:has', ['domain', 'type', 'refid'] );
+		$str = $object->function( 'product:has', ['domain', 'type', 'refid'] );
 		$this->assertEquals( 'product:has("domain","type","refid")', $str );
 	}
 
@@ -109,10 +122,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'product' )->create();
 		$expected = \Aimeos\MShop\Product\Item\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( $expected, $this->object->get( 1, ['text'] ) );
+		$this->assertInstanceOf( $expected, $object->get( 1, ['text'] ) );
 	}
 
 
@@ -162,10 +180,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'product' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'resolve' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'resolve' )
 			->willReturn( $item );
 
-		$this->assertEquals( $item, $this->object->resolve( 'test' ) );
+		$this->assertEquals( $item, $object->resolve( 'test' ) );
 	}
 
 
@@ -174,10 +197,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$total = 0;
 		$item = \Aimeos\MShop::create( $this->context, 'product' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Product\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Product\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search( $total )->toArray() );
+		$this->assertEquals( [$item], $object->search( $total )->toArray() );
 	}
 
 

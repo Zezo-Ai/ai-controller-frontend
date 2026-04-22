@@ -9,6 +9,7 @@
 namespace Aimeos\Controller\Frontend\Review;
 
 
+#[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
 class StandardTest extends \PHPUnit\Framework\TestCase
 {
 	private $context;
@@ -27,7 +28,7 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 			->onlyMethods( ['delete', 'save', 'type'] )
 			->getMock();
 
-		$this->manager->method( 'type' )->willReturn( ['review'] );
+		$this->manager->expects( $this->any() )->method( 'type' )->willReturn( ['review'] );
 
 		\Aimeos\MShop::inject( '\\Aimeos\\MShop\\Review\\Manager\\Standard', $this->manager );
 

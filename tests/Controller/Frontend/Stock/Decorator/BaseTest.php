@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Stock\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Stock\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Stock\Decorator\Example( $this->stub, $this->context );
 	}
@@ -71,10 +69,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'stock' )->create();
 		$expected = \Aimeos\MShop\Stock\Item\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Stock\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Stock\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( $expected, $this->object->get( 1 ) );
+		$this->assertInstanceOf( $expected, $object->get( 1 ) );
 	}
 
 
@@ -88,10 +91,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'stock' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Stock\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Stock\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search()->toArray() );
+		$this->assertEquals( [$item], $object->search()->toArray() );
 	}
 
 

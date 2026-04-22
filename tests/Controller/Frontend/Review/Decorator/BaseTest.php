@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Review\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $this->stub, $this->context );
 	}
@@ -56,10 +54,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testAggregate()
 	{
-		$this->stub->expects( $this->once() )->method( 'aggregate' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'aggregate' )
 			->willReturn( map() );
 
-		$this->assertEquals( [], $this->object->aggregate( 'test' )->toArray() );
+		$this->assertEquals( [], $object->aggregate( 'test' )->toArray() );
 	}
 
 
@@ -78,9 +81,14 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testDelete()
 	{
-		$this->stub->expects( $this->once() )->method( 'delete' );
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
 
-		$this->assertSame( $this->object, $this->object->delete( '-1' ) );
+		$stub->expects( $this->once() )->method( 'delete' );
+
+		$this->assertSame( $object, $object->delete( '-1' ) );
 	}
 
 
@@ -100,10 +108,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'review' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Review\Item\Iface::class, $this->object->get( -1 ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Review\Item\Iface::class, $object->get( -1 ) );
 	}
 
 
@@ -111,10 +124,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'review' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'list' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'list' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->list()->toArray() );
+		$this->assertEquals( [$item], $object->list()->toArray() );
 	}
 
 
@@ -128,10 +146,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'review' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'save' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'save' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Review\Item\Iface::class, $this->object->save( $item ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Review\Item\Iface::class, $object->save( $item ) );
 	}
 
 
@@ -139,10 +162,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'review' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Review\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Review\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search()->toArray() );
+		$this->assertEquals( [$item], $object->search()->toArray() );
 	}
 
 

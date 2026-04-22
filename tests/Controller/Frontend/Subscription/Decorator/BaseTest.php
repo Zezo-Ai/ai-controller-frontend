@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Subscription\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $this->stub, $this->context );
 	}
@@ -58,10 +56,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'subscription' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'cancel' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'cancel' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $this->object->cancel( -1 ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $object->cancel( -1 ) );
 	}
 
 
@@ -75,19 +78,29 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'subscription' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $this->object->get( -1 ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $object->get( -1 ) );
 	}
 
 
 	public function testGetIntervals()
 	{
-		$this->stub->expects( $this->once() )->method( 'getIntervals' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'getIntervals' )
 			->willReturn( map() );
 
-		$this->assertInstanceOf( \Aimeos\Map::class, $this->object->getIntervals() );
+		$this->assertInstanceOf( \Aimeos\Map::class, $object->getIntervals() );
 	}
 
 
@@ -101,10 +114,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'subscription' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'save' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'save' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $this->object->save( $item ) );
+		$this->assertInstanceOf( \Aimeos\MShop\Subscription\Item\Iface::class, $object->save( $item ) );
 	}
 
 
@@ -112,10 +130,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'subscription' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Subscription\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Subscription\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search()->toArray() );
+		$this->assertEquals( [$item], $object->search()->toArray() );
 	}
 
 

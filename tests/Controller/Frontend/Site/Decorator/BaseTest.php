@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Site\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $this->stub, $this->context );
 	}
@@ -65,10 +63,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'locale/site' )->create();
 		$expected = \Aimeos\MShop\Locale\Item\Site\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'find' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'find' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( $expected, $this->object->find( 'test', ['text'] ) );
+		$this->assertInstanceOf( $expected, $object->find( 'test', ['text'] ) );
 	}
 
 
@@ -77,10 +80,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$item = \Aimeos\MShop::create( $this->context, 'locale/site' )->create();
 		$expected = \Aimeos\MShop\Locale\Item\Site\Iface::class;
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( $expected, $this->object->get( 1, ['text'] ) );
+		$this->assertInstanceOf( $expected, $object->get( 1, ['text'] ) );
 	}
 
 
@@ -92,10 +100,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testGetPath()
 	{
-		$this->stub->expects( $this->once() )->method( 'getPath' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'getPath' )
 			->willReturn( [] );
 
-		$this->assertEquals( [], $this->object->getPath( -1 ) );
+		$this->assertEquals( [], $object->getPath( -1 ) );
 	}
 
 
@@ -103,10 +116,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$catItem = \Aimeos\MShop::create( $this->context, 'locale/site' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'getTree' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'getTree' )
 			->willReturn( $catItem );
 
-		$this->assertInstanceOf( \Aimeos\MShop\Locale\Item\Site\Iface::class, $this->object->getTree() );
+		$this->assertInstanceOf( \Aimeos\MShop\Locale\Item\Site\Iface::class, $object->getTree() );
 	}
 
 
@@ -121,10 +139,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$total = 0;
 		$item = \Aimeos\MShop::create( $this->context, 'locale/site' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Site\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Site\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search( $total )->toArray() );
+		$this->assertEquals( [$item], $object->search( $total )->toArray() );
 	}
 
 

@@ -25,9 +25,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->context = \TestHelper::context();
 
-		$this->stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$this->stub = $this->createStub( \Aimeos\Controller\Frontend\Service\Standard::class );
 
 		$this->object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $this->stub, $this->context );
 	}
@@ -70,19 +68,29 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'service' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'find' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'find' )
 			->willReturn( $item );
 
-		$this->assertSame( $item, $this->object->find( 'test' ) );
+		$this->assertSame( $item, $object->find( 'test' ) );
 	}
 
 
 	public function testFunction()
 	{
-		$this->stub->expects( $this->once() )->method( 'function' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'function' )
 			->willReturn( 'service:has("domain","type","refid")' );
 
-		$str = $this->object->function( 'service:has', ['domain', 'type', 'refid'] );
+		$str = $object->function( 'service:has', ['domain', 'type', 'refid'] );
 		$this->assertEquals( 'service:has("domain","type","refid")', $str );
 	}
 
@@ -91,10 +99,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'service' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'get' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'get' )
 			->willReturn( $item );
 
-		$this->assertSame( $item, $this->object->get( -1 ) );
+		$this->assertSame( $item, $object->get( -1 ) );
 	}
 
 
@@ -103,19 +116,29 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$manager = \Aimeos\MShop::create( $this->context, 'service' );
 		$provider = $manager->getProvider( $manager->find( 'unitdeliverycode', [], 'service', 'delivery' ), 'delivery' );
 
-		$this->stub->expects( $this->once() )->method( 'getProvider' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'getProvider' )
 			->willReturn( $provider );
 
-		$this->assertSame( $provider, $this->object->getProvider( -1 ) );
+		$this->assertSame( $provider, $object->getProvider( -1 ) );
 	}
 
 
 	public function testGetProviders()
 	{
-		$this->stub->expects( $this->once() )->method( 'getProviders' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'getProviders' )
 			->willReturn( map() );
 
-		$this->assertEquals( [], $this->object->getProviders( 'payment' )->toArray() );
+		$this->assertEquals( [], $object->getProviders( 'payment' )->toArray() );
 	}
 
 
@@ -129,10 +152,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 	{
 		$item = \Aimeos\MShop::create( $this->context, 'order' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'process' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'process' )
 			->willReturn( new \Aimeos\MShop\Common\Helper\Form\Standard() );
 
-		$this->assertInstanceOf( 'Aimeos\MShop\Common\Helper\Form\Iface', $this->object->process( $item, -1, [], [] ) );
+		$this->assertInstanceOf( 'Aimeos\MShop\Common\Helper\Form\Iface', $object->process( $item, -1, [], [] ) );
 	}
 
 
@@ -141,10 +169,15 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 		$total = 0;
 		$item = \Aimeos\MShop::create( $this->context, 'service' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'search' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'search' )
 			->willReturn( map( [$item] ) );
 
-		$this->assertEquals( [$item], $this->object->search( $total )->toArray() );
+		$this->assertEquals( [$item], $object->search( $total )->toArray() );
 	}
 
 
@@ -162,25 +195,35 @@ class BaseTest extends \PHPUnit\Framework\TestCase
 
 	public function testUpdatePush()
 	{
-		$response = $this->getMockBuilder( \Psr\Http\Message\ResponseInterface::class )->getMock();
-		$request = $this->getMockBuilder( \Psr\Http\Message\ServerRequestInterface::class )->getMock();
+		$response = $this->createStub( \Psr\Http\Message\ResponseInterface::class );
+		$request = $this->createStub( \Psr\Http\Message\ServerRequestInterface::class );
 
-		$this->stub->expects( $this->once() )->method( 'updatePush' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'updatePush' )
 			->willReturn( $response );
 
-		$this->assertInstanceOf( \Psr\Http\Message\ResponseInterface::class, $this->object->updatePush( $request, $response, 'test' ) );
+		$this->assertInstanceOf( \Psr\Http\Message\ResponseInterface::class, $object->updatePush( $request, $response, 'test' ) );
 	}
 
 
 	public function testUpdateSync()
 	{
-		$request = $this->getMockBuilder( \Psr\Http\Message\ServerRequestInterface::class )->getMock();
+		$request = $this->createStub( \Psr\Http\Message\ServerRequestInterface::class );
 		$item = \Aimeos\MShop::create( $this->context, 'order' )->create();
 
-		$this->stub->expects( $this->once() )->method( 'updateSync' )
+		$stub = $this->getMockBuilder( \Aimeos\Controller\Frontend\Service\Standard::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$object = new \Aimeos\Controller\Frontend\Service\Decorator\Example( $stub, $this->context );
+
+		$stub->expects( $this->once() )->method( 'updateSync' )
 			->willReturn( $item );
 
-		$this->assertInstanceOf( 'Aimeos\MShop\Order\Item\Iface', $this->object->updateSync( $request, 'test', -1 ) );
+		$this->assertInstanceOf( 'Aimeos\MShop\Order\Item\Iface', $object->updateSync( $request, 'test', -1 ) );
 	}
 
 

@@ -9,6 +9,7 @@
 namespace Aimeos\Controller\Frontend\Subscription;
 
 
+#[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
 class StandardTest extends \PHPUnit\Framework\TestCase
 {
 	private $context;
@@ -28,7 +29,7 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 			->onlyMethods( ['save', 'type'] )
 			->getMock();
 
-		$this->manager->method( 'type' )->willReturn( ['subscription'] );
+		$this->manager->expects( $this->any() )->method( 'type' )->willReturn( ['subscription'] );
 
 		\Aimeos\MShop::inject( '\\Aimeos\\MShop\\Subscription\\Manager\\Standard', $this->manager );
 
