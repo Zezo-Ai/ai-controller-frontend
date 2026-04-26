@@ -1,49 +1,43 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# 
-# Translators:
-# Miro Sertić <miro.sertic0606@gmail.com>, 2018
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: hr\n"
+"Language-Team: Croatian (http://app.transifex.com/aimeos/aimeos-core/language/hr/)\n"
+"Last-Translator: Miro Sertić <miro.sertic0606@gmail.com>, 2018\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2015-07-09 20:35+0000\n"
+"POT-Creation-Date: 2026-04-25 11:22+0200\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "Project-Id-Version: aimeos-core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-16 11:56+0200\n"
-"PO-Revision-Date: 2015-07-09 20:35+0000\n"
-"Last-Translator: Miro Sertić <miro.sertic0606@gmail.com>, 2018\n"
-"Language-Team: Croatian (http://app.transifex.com/aimeos/aimeos-core/language/hr/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Language: hr\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 msgid "%013.2F"
-msgstr ""
+msgstr "%013.2F"
 
 #, php-format
 msgid "Adding product with ID \"%1$s\" is not allowed"
-msgstr ""
+msgstr "Dodavanje proizvoda s ID-om \"%1$s\" nije dopušteno"
 
 #, php-format
 msgid "Available attribute IDs \"%1$s\" do not match the given attribute IDs \"%2$s\""
-msgstr ""
+msgstr "Dostupni ID-ovi atributa \"%1$s\" ne podudaraju se s navedenim ID-ovima atributa \"%2$s\""
 
 #, php-format
 msgid "Basket item at position \"%1$d\" cannot be changed"
-msgstr ""
+msgstr "Stavka košarice na položaju \"%1$d\" se ne može promijeniti"
 
 #, php-format
 msgid "Basket item at position \"%1$d\" cannot be deleted manually"
-msgstr ""
+msgstr "Stavka košarice na položaju \"%1$d\" se ne može ručno izbrisati."
 
 #, php-format
 msgid "Category is not available"
-msgstr ""
+msgstr "Kategorija nije dostupna"
 
 #, php-format
 msgid "Class \"%1$s\" does not implement \"%2$s\""
-msgstr ""
+msgstr "Klasa \"%1$s\" ne implementira \"%2$s\""
 
 #, php-format
 msgid "Class \"%1$s\" does not implement interface \"%2$s\""
@@ -63,31 +57,31 @@ msgstr "Putanja kontolera je prazna"
 
 #, php-format
 msgid "Coupon code \"%1$s\" is invalid"
-msgstr ""
+msgstr "Kupon kod \"%1$s\" je nevažeći"
 
 #, php-format
 msgid "Coupon code \"%1$s\" is invalid or not available any more"
-msgstr ""
+msgstr "Kupon kod \"%1$s\" je nevažeći ili više nije dostupan"
 
 #, php-format
 msgid "Coupon for code \"%1$s\" is not available any more"
-msgstr ""
+msgstr "Kupon za kod \"%1$s\" više nije dostupan."
 
 #, php-format
 msgid "Domain \"%1$s\" is not supported"
-msgstr ""
+msgstr "Domen \"%1$s\" nije podržan"
 
 #, php-format
 msgid "Invalid \"%1$s\" references for product with ID \"%2$s\""
-msgstr ""
+msgstr "Neispravne reference \"%1$s\" za proizvod s ID-om \"%2$s\""
 
 #, php-format
 msgid "Invalid \"%1$s\" references for product with ID %2$s"
-msgstr ""
+msgstr "Neispravne reference \"%1$s\" za proizvod s ID-om %2$s"
 
 #, php-format
 msgid "Invalid address properties, please check your input"
-msgstr ""
+msgstr "Neispravne su svojstva adrese, molimo provjerite svoj unos."
 
 #, php-format
 msgid "Invalid characters in class name \"%1$s\""
@@ -95,15 +89,15 @@ msgstr "Nedozvoljen simbol u imenu klase \"%1$s\""
 
 #, php-format
 msgid "Invalid characters in controller name \"%1$s\""
-msgstr ""
+msgstr "Neispravni znakovi u nazivu kontrolera \"%1$s\""
 
 #, php-format
 msgid "Invalid characters in controller name \"%1$s\" in \"%2$s\""
-msgstr ""
+msgstr "Neispravni znakovi u nazivu kontrolera \"%1$s\" u \"%2$s\""
 
 #, php-format
 msgid "Invalid class name \"%1$s\""
-msgstr ""
+msgstr "Neispravan naziv klase \"%1$s\""
 
 #, php-format
 msgid "Invalid domain \"%1$s\""
@@ -115,78 +109,78 @@ msgstr "Invalid factory \"%1$s\""
 
 #, php-format
 msgid "Invalid price value \"%1$s\""
-msgstr ""
+msgstr "Neispravna vrijednost cijene \"%1$s\""
 
 msgid "Invalid service attributes"
-msgstr ""
+msgstr "Neispravni atributi usluge"
 
 #, php-format
 msgid "Invalid value for address type \"%1$s\""
-msgstr ""
+msgstr "Neispravna vrijednost za tip adrese \"%1$s\""
 
 #, php-format
 msgid "List type for domain \"%1$s\" and code \"%2$s\" not found"
-msgstr ""
+msgstr "Nije pronađen tip popisa za domenu \"%1$s\" i kod \"%2$s\""
 
 #, php-format
 msgid "No article found for selected attributes and product ID \"%1$s\""
-msgstr ""
+msgstr "Nije pronađen nijedan članak za odabrane atribute i ID proizvoda \"%1$s\""
 
 #, php-format
 msgid "No customer lists domain"
-msgstr ""
+msgstr "Ne navodi popis kupaca"
 
 #, php-format
 msgid "No customer lists type code"
-msgstr ""
+msgstr "Nema koda vrste popisa kupaca"
 
 #, php-format
 msgid "No item for \"%1$s\" (%2$s) found"
-msgstr ""
+msgstr "Nije pronađen nijedan element za \"%1$s\" (%2$s)"
 
 #, php-format
 msgid "No order item for ID \"%1$s\" found"
-msgstr ""
+msgstr "Nije pronađen nijedan stavak narudžbe za ID \"%1$s\""
 
 #, php-format
 msgid "No stock for product ID \"%1$s\" and type \"%2$s\" available"
-msgstr ""
+msgstr "Nema dostupne zalihe za proizvod s ID-om \"%1$s\" i vrstom \"%2$s\"."
 
 #, php-format
 msgid "No unique article found for selected attributes and product ID \"%1$s\""
-msgstr ""
+msgstr "Nije pronađen nijedan jedinstveni članak za odabrane atribute i ID proizvoda \"%1$s\""
 
 #, php-format
 msgid "Not allowed to access customer data for ID \"%1$s\""
-msgstr ""
+msgstr "Nije dopušten pristup podacima kupca za ID \"%1$s\""
 
 #, php-format
 msgid "Number of coupon codes exceeds the limit"
-msgstr ""
+msgstr "Broj kodova kupona prelazi ograničenje"
 
 #, php-format
 msgid "Product item with ID \"%1$s\" not found"
-msgstr ""
+msgstr "Proizvod s ID-om \"%1$s\" nije pronađen"
 
 #, php-format
 msgid "Requirements for coupon code \"%1$s\" aren't met"
-msgstr ""
+msgstr "Uvjeti za kod kupona \"%1$s\" nisu ispunjeni."
 
 #, php-format
 msgid "Service item for type \"%1$s\" and ID \"%2$s\" not found"
-msgstr ""
+msgstr "Stavka usluge za tip \"%1$s\" i ID \"%2$s\" nije pronađena"
 
 #, php-format
 msgid "Site is not available"
-msgstr ""
+msgstr "Stranica nije dostupna"
 
 #, php-format
 msgid "Temporary limit reached"
-msgstr ""
+msgstr "Privremeni limit je dostignut"
 
 #, php-format
 msgid "Temporary order limit reached"
-msgstr ""
+msgstr "Dostignuta je granica privremene naredbe"
 
 #, php-format
 msgid "The order has already been created"
@@ -194,7 +188,7 @@ msgstr "Narudžba je već kreirana"
 
 #, php-format
 msgid "There are not enough products \"%1$s\" in stock"
-msgstr ""
+msgstr "Nema dovoljno proizvoda \"%1$s\" na zalihi."
 
 #, php-format
 msgid "Unable to call method \"%1$s\""
@@ -202,35 +196,35 @@ msgstr "Nemožemo pozvati metodu \"%1$s\""
 
 #, php-format
 msgid "Unable to call method \"%1$s::%2$s\""
-msgstr ""
+msgstr "Ne može se pozvati metoda \"%1$s::%2$s\""
 
 #, php-format
 msgid "Unable to create provider \"%1$s\" for service with ID \"%2$s\""
-msgstr ""
+msgstr "Nije moguće stvoriti pružatelja \"%1$s\" za uslugu s ID-om \"%2$s\""
 
 #, php-format
 msgid "Unable to find category \"%1$s\""
-msgstr ""
+msgstr "Ne može se pronaći kategorija \"%1$s\""
 
 #, php-format
 msgid "Unable to find product \"%1$s\""
-msgstr ""
+msgstr "Proizvod \"%1$s\" nije pronađen."
 
 #, php-format
 msgid "Unable to find supplier \"%1$s\""
-msgstr ""
+msgstr "Ne može se pronaći dobavljač \"%1$s\""
 
 #, php-format
 msgid "Unknown attributes \"%1$s\""
-msgstr ""
+msgstr "Neprijavljeni atributi \"%1$s\""
 
 msgid "Unknown service attributes"
-msgstr ""
+msgstr "Neprijavljeni atributi usluge"
 
 #, php-format
 msgid "You are not allowed to manage groups"
-msgstr ""
+msgstr "Nije vam dopušteno upravljati grupama"
 
 #, php-format
 msgid "You can only add a review if you have ordered a product"
-msgstr ""
+msgstr "Možete dodati recenziju samo ako ste naručili proizvod."

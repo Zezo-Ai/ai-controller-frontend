@@ -1,44 +1,39 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# 
-# Translators:
 msgid ""
 msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: tk\n"
+"Language-Team: Turkmen (http://app.transifex.com/aimeos/aimeos-core/language/tk/)\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2015-07-09 20:35+0000\n"
+"POT-Creation-Date: 2026-04-25 11:22+0200\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: aimeos-core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-16 11:56+0200\n"
-"PO-Revision-Date: 2015-07-09 20:35+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Turkmen (http://app.transifex.com/aimeos/aimeos-core/language/tk/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Language: tk\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "%013.2F"
-msgstr ""
+msgstr "%013.2F"
 
 #, php-format
 msgid "Adding product with ID \"%1$s\" is not allowed"
-msgstr ""
+msgstr "ID-si \"%1$s\" bolan önümi goşmak rugsat berilmeýär"
 
 #, php-format
 msgid "Available attribute IDs \"%1$s\" do not match the given attribute IDs \"%2$s\""
-msgstr ""
+msgstr "Elýeterli atribut ID-leri \"%1$s\" berlen atribut ID-leri \"%2$s\" bilen gabat gelmeýär."
 
 #, php-format
 msgid "Basket item at position \"%1$d\" cannot be changed"
-msgstr ""
+msgstr "\"%1$d\" pozisiýasyndaky sepet elementi üýtgedilip bilinmeýär"
 
 #, php-format
 msgid "Basket item at position \"%1$d\" cannot be deleted manually"
-msgstr ""
+msgstr "\"%1$d\" pozisiýasyndaky sepet elementi el bilen pozulmaz"
 
 #, php-format
 msgid "Category is not available"
-msgstr ""
+msgstr "Kategoriýa elýeterli däl"
 
 #, php-format
 msgid "Class \"%1$s\" does not implement \"%2$s\""
@@ -58,35 +53,35 @@ msgstr "Klas \"%1$s\" tapylmady"
 
 #, php-format
 msgid "Controller path is empty"
-msgstr ""
+msgstr "Dolandyryjynyň ýoly boş"
 
 #, php-format
 msgid "Coupon code \"%1$s\" is invalid"
-msgstr ""
+msgstr "Kupon kody \"%1$s\" ýatylmaýar"
 
 #, php-format
 msgid "Coupon code \"%1$s\" is invalid or not available any more"
-msgstr ""
+msgstr "Kupon kody \"%1$s\" ýalňyş ýa-da indi elýeterli däl"
 
 #, php-format
 msgid "Coupon for code \"%1$s\" is not available any more"
-msgstr ""
+msgstr "Kod \"%1$s\" üçin kupon indi elýeterli däl."
 
 #, php-format
 msgid "Domain \"%1$s\" is not supported"
-msgstr ""
+msgstr "Domen \"%1$s\" goldanylmaýar"
 
 #, php-format
 msgid "Invalid \"%1$s\" references for product with ID \"%2$s\""
-msgstr ""
+msgstr "ID \"%2$s\" bolan önüm üçin nädogry \"%1$s\" salgylary"
 
 #, php-format
 msgid "Invalid \"%1$s\" references for product with ID %2$s"
-msgstr ""
+msgstr "ID %2$s bolan önüm üçin nädogry \"%1$s\" salgylary"
 
 #, php-format
 msgid "Invalid address properties, please check your input"
-msgstr ""
+msgstr "Nädogry salgydyň häsiýetleri, girizişiňizi barlap görüň"
 
 #, php-format
 msgid "Invalid characters in class name \"%1$s\""
@@ -94,11 +89,11 @@ msgstr "\"%1$s\" klass adynda nädogry nyşanlar bar"
 
 #, php-format
 msgid "Invalid characters in controller name \"%1$s\""
-msgstr ""
+msgstr "Kontroller adyndaky ýatylmaýan nyşan \"%1$s\""
 
 #, php-format
 msgid "Invalid characters in controller name \"%1$s\" in \"%2$s\""
-msgstr ""
+msgstr "Kontroller adyndaky \"%1$s\" we \"%2$s\" ýerindäki nädogry nyşanlar"
 
 #, php-format
 msgid "Invalid class name \"%1$s\""
@@ -114,50 +109,50 @@ msgstr "Nädogry fabrika \"%1$s\""
 
 #, php-format
 msgid "Invalid price value \"%1$s\""
-msgstr ""
+msgstr "Baha gymmaty ýatylmaýar \"%1$s\""
 
 msgid "Invalid service attributes"
-msgstr ""
+msgstr "Nädogry hyzmat aýratynlyklary"
 
 #, php-format
 msgid "Invalid value for address type \"%1$s\""
-msgstr ""
+msgstr "Adres görnüşi \"%1$s\" üçin ýatylmaýan gymmat"
 
 #, php-format
 msgid "List type for domain \"%1$s\" and code \"%2$s\" not found"
-msgstr ""
+msgstr "Domen \"%1$s\" we kod \"%2$s\" üçin sanaw görnüşi tapylmady"
 
 #, php-format
 msgid "No article found for selected attributes and product ID \"%1$s\""
-msgstr ""
+msgstr "Saýlanan aýratynlyklar we önüm ID \"%1$s\" boýunça hiç bir makala tapylmady."
 
 #, php-format
 msgid "No customer lists domain"
-msgstr ""
+msgstr "Hiç bir müşderi sanawy domeni görkezmeýär."
 
 #, php-format
 msgid "No customer lists type code"
-msgstr ""
+msgstr "Müşderi sanawlarynyň görnüş kody ýok"
 
 #, php-format
 msgid "No item for \"%1$s\" (%2$s) found"
-msgstr ""
+msgstr "\"%1$s\" (%2$s) üçin hiç bir element tapylmady"
 
 #, php-format
 msgid "No order item for ID \"%1$s\" found"
-msgstr ""
+msgstr "ID \"%1$s\" üçin hiç bir sargyt elementi tapylmady"
 
 #, php-format
 msgid "No stock for product ID \"%1$s\" and type \"%2$s\" available"
-msgstr ""
+msgstr "Önüm ID-si \"%1$s\" we görnüşi \"%2$s\" üçin stok ýok."
 
 #, php-format
 msgid "No unique article found for selected attributes and product ID \"%1$s\""
-msgstr ""
+msgstr "Saýlanan aýratynlyklar we önüm ID \"%1$s\" üçin ýeke-täk makala tapylmady."
 
 #, php-format
 msgid "Not allowed to access customer data for ID \"%1$s\""
-msgstr ""
+msgstr "ID \"%1$s\" üçin müşderi maglumatlaryna girmäge rugsat berilmeýär."
 
 #, php-format
 msgid "Number of coupon codes exceeds the limit"
@@ -165,35 +160,35 @@ msgstr "Talon kodlarynyň sany çäkden ýokary"
 
 #, php-format
 msgid "Product item with ID \"%1$s\" not found"
-msgstr ""
+msgstr "ID \"%1$s\" bilen önüm tapylmady"
 
 #, php-format
 msgid "Requirements for coupon code \"%1$s\" aren't met"
-msgstr ""
+msgstr "Kupon kody \"%1$s\" üçin talaplar berjaý edilmeýär."
 
 #, php-format
 msgid "Service item for type \"%1$s\" and ID \"%2$s\" not found"
-msgstr ""
+msgstr "\"%1$s\" görnüşindäki we \"%2$s\" ID-li hyzmat elementi tapylmady"
 
 #, php-format
 msgid "Site is not available"
-msgstr ""
+msgstr "Saýt elýeterli däl"
 
 #, php-format
 msgid "Temporary limit reached"
-msgstr ""
+msgstr "Wagtlaýyn çäk ýetdi"
 
 #, php-format
 msgid "Temporary order limit reached"
-msgstr ""
+msgstr "Wagtlaýyn buýruk çägi doly boldy"
 
 #, php-format
 msgid "The order has already been created"
-msgstr ""
+msgstr "Sargyt eýýäm döredildi"
 
 #, php-format
 msgid "There are not enough products \"%1$s\" in stock"
-msgstr ""
+msgstr "Ambarda \"%1$s\" önümleri ýeterlik däl."
 
 #, php-format
 msgid "Unable to call method \"%1$s\""
@@ -201,35 +196,35 @@ msgstr "\"%1$s\" metodyny işledip bolmaýar"
 
 #, php-format
 msgid "Unable to call method \"%1$s::%2$s\""
-msgstr ""
+msgstr "\"%1$s::%2$s\" metodyny çagyrmak mümkin däl"
 
 #, php-format
 msgid "Unable to create provider \"%1$s\" for service with ID \"%2$s\""
-msgstr ""
+msgstr "ID \"%2$s\" bolan hyzmat üçin \"%1$s\" üpjün edijisini döretmek mümkin däl."
 
 #, php-format
 msgid "Unable to find category \"%1$s\""
-msgstr ""
+msgstr "\"%1$s\" kategoriýasyny tapyp bolmady"
 
 #, php-format
 msgid "Unable to find product \"%1$s\""
-msgstr ""
+msgstr "\"%1$s\" önümini tapyp bolmady"
 
 #, php-format
 msgid "Unable to find supplier \"%1$s\""
-msgstr ""
+msgstr "Täminleýjini \"%1$s\" tapyp bolmady"
 
 #, php-format
 msgid "Unknown attributes \"%1$s\""
-msgstr ""
+msgstr "Näbelli aýratynlyklar \"%1$s\""
 
 msgid "Unknown service attributes"
-msgstr ""
+msgstr "Näbelli hyzmat aýratynlyklary"
 
 #, php-format
 msgid "You are not allowed to manage groups"
-msgstr ""
+msgstr "Siz toparlary dolandyrmak hukugyna eýe dälsiňiz."
 
 #, php-format
 msgid "You can only add a review if you have ordered a product"
-msgstr ""
+msgstr "Siz diňe önüm sargyt eden bolsaňyz syn goşup bilersiňiz."
