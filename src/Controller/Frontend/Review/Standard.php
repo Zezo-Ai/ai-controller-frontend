@@ -218,8 +218,18 @@ class Standard
 	 */
 	public function delete( array|string $ids ) : Iface
 	{
+		$context = $this->context();
+		$customerid = $context->user();
+
+		if( $customerid === null )
+		{
+			$msg = 'Only logged in users are allowed to delete reviews';
+			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
+		}
+
 		$ids = (array) $ids;
-		$filter = $this->manager->filter()->add( ['review.id' => $ids, 'review.customerid' => $this->context()->user()] );
+		$filter = $this->manager->filter()->add( ['review.id' => $ids, 'review.customerid' => $customerid] );
+		$filter->add( $filter->compare( '!=', 'review.customerid', null ) );
 		$this->manager->delete( $this->manager->search( $filter->slice( 0, count( $ids ) ) )->toArray() );
 
 		return $this;
@@ -268,7 +278,24 @@ class Standard
 	 */
 	public function get( string $id ) : \Aimeos\MShop\Review\Item\Iface
 	{
-		return $this->manager->get( $id, [], true ); // @phpstan-ignore return.type
+		$context = $this->context();
+		$customerid = $context->user();
+
+		if( $customerid === null )
+		{
+			$msg = 'Only logged in users are allowed to fetch reviews';
+			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
+		}
+
+		$item = $this->manager->get( $id, [], true ); // @phpstan-ignore return.type
+
+		if( $item->getCustomerId() === null || $item->getCustomerId() != $customerid )
+		{
+			$msg = 'You can only fetch your own reviews';
+			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
+		}
+
+		return $item;
 	}
 
 
@@ -281,8 +308,18 @@ class Standard
 	 */
 	public function list( ?int &$total = null ) : \Aimeos\Map
 	{
+		$context = $this->context();
+		$customerid = $context->user();
+
+		if( $customerid === null )
+		{
+			$msg = 'Only logged in users are allowed to fetch reviews';
+			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
+		}
+
 		$filter = clone $this->filter;
-		$cond = $filter->is( 'review.customerid', '==', $this->context()->user() );
+		$cond = $filter->is( 'review.customerid', '==', $customerid );
+		$cond = $filter->and( [$cond, $filter->is( 'review.customerid', '!=', null )] );
 
 		// @phpstan-ignore-next-line
 		$filter->setConditions( $filter->and( array_merge( $this->getConditions(), [$cond] ) ) );
@@ -320,6 +357,13 @@ class Standard
 	public function save( \Aimeos\MShop\Review\Item\Iface $item ) : \Aimeos\MShop\Review\Item\Iface
 	{
 		$domain = $item->getDomain();
+		$context = $this->context();
+
+		if( $context->user() === null )
+		{
+			$msg = 'Only logged in users are allowed to save reviews';
+			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
+		}
 
 		if( !in_array( $domain, ['product', 'locale/site'] ) )
 		{
@@ -327,7 +371,6 @@ class Standard
 			throw new \Aimeos\Controller\Frontend\Review\Exception( $msg );
 		}
 
-		$context = $this->context();
 		$manager = \Aimeos\MShop::create( $context, 'order' );
 
 		$filter = $manager->filter( true )->add( [

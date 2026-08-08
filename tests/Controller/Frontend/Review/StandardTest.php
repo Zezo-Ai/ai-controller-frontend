@@ -75,6 +75,15 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 	}
 
 
+	public function testDeleteNoUser()
+	{
+		$this->context->setUser( null );
+
+		$this->expectException( \Aimeos\Controller\Frontend\Review\Exception::class );
+		$this->object->delete( $this->getReviewItem()->getId() );
+	}
+
+
 	public function testDomain()
 	{
 		$this->assertCount( 1, $this->object->domain( 'customer' )->search() );
@@ -108,6 +117,15 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 	}
 
 
+	public function testGetNoUser()
+	{
+		$this->context->setUser( null );
+
+		$this->expectException( \Aimeos\Controller\Frontend\Review\Exception::class );
+		$this->object->get( $this->getReviewItem() );
+	}
+
+
 	public function testList()
 	{
 		$total = 0;
@@ -118,6 +136,16 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 
 		$this->assertEquals( 1, count( $this->object->domain( 'product' )->slice( 0, 1 )->list( $total ) ) );
 		$this->assertGreaterThanOrEqual( 2, $total );
+	}
+
+
+	public function testListNoUser()
+	{
+		$total = 0;
+		$this->context->setUser( null );
+
+		$this->expectException( \Aimeos\Controller\Frontend\Review\Exception::class );
+		$this->object->list( $total );
 	}
 
 
@@ -138,6 +166,15 @@ class StandardTest extends \PHPUnit\Framework\TestCase
 			->willReturn( $item );
 
 		$this->assertInstanceOf( \Aimeos\MShop\Review\Item\Iface::class, $this->object->save( $item ) );
+	}
+
+
+	public function testSaveNoUser()
+	{
+		$this->context->setUser( null );
+
+		$this->expectException( \Aimeos\Controller\Frontend\Review\Exception::class );
+		$this->object->save( $this->manager->create( ['review.domain' => 'product'] ) );
 	}
 
 
